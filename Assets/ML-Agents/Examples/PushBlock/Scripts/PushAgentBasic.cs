@@ -3,6 +3,7 @@
 using System.Collections;
 using UnityEngine;
 using Unity.MLAgents;
+using Unity.MLAgents.Demonstrations;
 
 public class PushAgentBasic : Agent
 {
@@ -182,34 +183,18 @@ public class PushAgentBasic : Agent
     public override void Heuristic(float[] actionsOut)
     {
         actionsOut[0] = 0;
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    actionsOut[0] = 3;
-        //}
-        //else if (Input.GetKey(KeyCode.W))
-        //{
-        //    actionsOut[0] = 1;
-        //}
-        //else if (Input.GetKey(KeyCode.A))
-        //{
-        //    actionsOut[0] = 4;
-        //}
-        //else if (Input.GetKey(KeyCode.S))
-        //{
-        //    actionsOut[0] = 2;
-        //}
-        //else if (Input.GetKey(KeyCode.Q))
-        //{
-        //    actionsOut[0] = 5;
-        //}
-        //else if (Input.GetKey(KeyCode.E))
-        //{
-        //    actionsOut[0] = 6;
-        //}
 
         actionsOut[0] = Input.GetAxis("Horizontal");
         actionsOut[1] = Input.GetAxis("Vertical");
 
+        if (Input.GetKey(KeyCode.JoystickButton5))
+        {
+            Time.timeScale = 0.35f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     /// <summary>
